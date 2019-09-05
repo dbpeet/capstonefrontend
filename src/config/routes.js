@@ -1,0 +1,21 @@
+import React from 'react';
+// import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import Login from '../components/Login';
+import Register from '../components/Register';
+// import Profile from '../components/Profile/Profile';
+import ProfileContainer from '../containers/ProfileContainer'
+//import Home from '../pages/Home/Home';
+
+const Path = ({ setCurrentUser, currentUser, history }) => {
+  return(
+    <Switch>
+      {/* <Route exact path='/' component={Home} /> */}
+      <Route path='/login' render={() => <Login history={history} setCurrentUser={setCurrentUser} />} />
+      <Route path='/register' component={Register} />
+      <Route path='/profile' component={ProfileContainer} />
+    </Switch>
+  )
+}
+
+export default withRouter(Path);
