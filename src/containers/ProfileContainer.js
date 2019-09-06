@@ -1,65 +1,74 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-// import Profile from '../pages/Profile/Profile';
-// import PostList from '../components/Posts/PostList';
+import EventList from './/components/events/EventList';
+import WorkList from './/components/works/Worklist';
+import ProfileHeader from '../components/profile/ProfileHeader'
 import { API_URL } from '../constants.js';
-// import CityView from '../pages/Cities/CityView';
+
 
 class ProfileContainer extends Component {
     state = {
-        user: '',
-        posts: [],
+        user: {},
+        works: [],
+        work_genres: [],
+        followed_genres: [],
+        followed_artists: [],
+        hosted_events: [],
+        followed_events: [],
     }
 
     componentDidMount() {
-       
-
-        // const getUserPosts = (postArr) => {
-        //     const posts = [];
-        //     postArr.forEach(function(postId) {
-        //         var post = axios.get(`${API_URL}/post/${postId}`, {withCredentials: true})
-        //         .then(posts.append(post));
-        //     })
-        //     this.setState({posts})
-        //     console.log("getUserPOst posts=", posts);
-        // };
-
-  
         const userId = localStorage.getItem('uid');
         axios.get(`${API_URL}/users/${userId}`, { withCredentials: true})
-            .then(res => { console.log(res); this.setState({ user: res.data.data }, () => {
-                axios({
-                    url:`${API_URL}/post`,
-                    method: 'PUT',
-                    data: { user_id: userId },
-                    withCredentials: true})
-                    .then(resPosts => {
-                        console.log("resPosts Profile =", resPosts); 
-                        this.setState({posts: (resPosts.data)})})
-            })})
+            .then(res => { 
+                console.log(res);
+                this.setState({ user: res.data.data }, ()=>{
+                    if(this.state.user.isArtist===True){
+                        this.getUserWorks(this.state.user.works);
+                        this.getHostedEvents(this.state.user.hosted_events);
+                        this.getWorkGenres(this.state.user.work_genres);
+                        this.getFollowedArtists(this.state.user.followed_artists);
+                        this.getFollowedEvents(this.state.user.followed_events);
+                        this.getFollowedGenres(this.state.user.followed_genres);
+                    } else {
+                        this.getFollowedArtists(this.state.user.followed_artists);
+                        this.getFollowedEvents(this.state.user.followed_events);
+                        this.getFollowedGenres(this.state.user.followed_genres);
+                    }
+                });
+               
+            })
             .catch(error => console.log(error))
+
+        
     };
 
+    getUserWorks = (worksArr) => {
+        const works = [];
+        worksArr.forEach(function(workId) {
+            var work = axios.get(`${API_URL}/work/${workId}`, {withCredentials: true})
+            .then(works.append(work));
+        })
+        this.setState({works})
+        console.log("getUserWorks works=", works);
+    };
+    getHostedEvents = (eventsArr) => {
+        const hosted_events = [];
+        eventsArr.forEach(function(eventId) {
+            var event = axios.get(`${API_URL}/event/${eventId}`, {withCredentials: true})
+            .then(events.append(event));
+        })
+        this.setState({hosted_events})
+        console.log("getUserEvents hosted_events=", events);
+    };
     
     render() {
         return (
 
         <>
-      
-            Profile Boop
-
-              {/* <div className="row">
-            <div className="col-md-6 left-section">
-                <div className="container mt-3">
-                    <Profile user={this.state.user} />
-                </div>
-            </div>
-            <div className="col-md-6 right-section">
-                <PostList posts={this.state.posts} />
-                <div className="container">
-                </div>
-              </div>
-            </div>                */}
+            <ProfileHeader user={this.state.user}/>
+            <EventList events={this.state.events}/>
+            <WorkList works={this.state.works}/>
         </>
         )
     };
