@@ -61,6 +61,15 @@ class ProfileContainer extends Component {
         this.setState({hosted_events})
         console.log("getUserEvents hosted_events=", events);
     };
+    getWorkGenres = (genresArr) => {
+        const work_genres = [];
+        genresArr.forEach(function(genreId) {
+            var genre = axios.get(`${API_URL}/genre/${genreId}`, {withCredentials: true})
+            .then(work_genres.append(work_genres));
+        })
+        this.setState({work_genres})
+        console.log("getWorkGenres work_genres=", work_genres);
+    };
     
     render() {
         return (
