@@ -29,6 +29,14 @@ class ProfileContainer extends Component {
         .catch(error => console.log(error))
     };
 
+    deletThis = (workId) => {
+        axios.delete(`${API_URL}/works/${workId}`, {withCredentials: true})
+        .then(res => { 
+            this.getUser()
+        })
+        .catch(error => console.log(error))
+    };
+
     // getUserWorks = (worksArr) => {
     //     const works = [];
     //     worksArr.forEach(function(workId) {
@@ -100,7 +108,7 @@ class ProfileContainer extends Component {
         <>
             <ProfileHeader user={this.state.user}/>
             {/* <EventList user={this.state.user}/> */}
-            <WorkList works={this.state.user.works} getUser={this.getUser}/>
+            <WorkList works={this.state.user.works} getUser={this.getUser} deletThis={this.deletThis}/>
         </>
         )
     };

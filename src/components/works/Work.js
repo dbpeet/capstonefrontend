@@ -6,9 +6,9 @@ const Work = ( props ) => {
     <div className='work'>
         {/* <button>Edit</button> */}
         <EditWork getUser={props.getUser} work={props.work}/>
-        <button>Delete</button>
+        <button onClick={()=>props.deletThis(props.work._id)}>Delete</button>
         <br/>
-        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${props.work.video_id}`} frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe width="560" height="315" src={`https://www.youtube.com/embed/${props.work.video_id}`} frameBorder="0" title={props.work._id} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         <h1>{props.work.title}</h1>
         <p>{props.work.description}</p>
     </div>

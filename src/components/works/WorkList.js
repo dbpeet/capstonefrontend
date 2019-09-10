@@ -7,58 +7,10 @@ import AddWork from '../modals/AddWork';
 
 
 class WorkList extends Component {
-  // state = {
-  //   title: '',
-  //   description: '',
-  //   video_id: '',
-  //   media_type: 'video',
-  //   artist: localStorage.getItem('uid'),
-  //   genre: '5d72da73f6cf606626b90f57',
-  // }
-
-  // initialState = {
-  //   title: '',
-  //   description: '',
-  //   video_id: '',
-  //   media_type: 'video',
-  //   artist: localStorage.getItem('uid'),
-  //   genre: '5d72da73f6cf606626b90f57',
-  // }
-
-  // shouldComponentUpdate(nextProps) {
-  //   if (this.props.works === nextProps.works) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const workInfo = this.state;
-  //   axios.post(`${API_URL}/works`, workInfo, { withCredentials: true })
-  //     .then(res => {
-  //       this.setState({...this.initialState})
-  //       this.props.getUser()
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
-
-  
-  
-  
   render() {
     if(this.props.works){
       const revWorks = this.props.works.reverse()
-      const worksToList = revWorks.map((work) => <Work key={work._id} work={work} getUser={this.props.getUser}/>)
+      const worksToList = revWorks.map((work) => <Work key={work._id} work={work} getUser={this.props.getUser} deletThis={this.props.deletThis}/>)
 
       return(
         <div className="row">

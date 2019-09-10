@@ -9,7 +9,7 @@ class AddWork extends Component {
         video_id: '',
         media_type: 'video',
         artist: localStorage.getItem('uid'),
-        genre: '5d72da73f6cf606626b90f57',
+        genre: '5d78068b8fcb199fd5ab9b0a',
       }
     
       initialState = {
@@ -18,7 +18,7 @@ class AddWork extends Component {
         video_id: '',
         media_type: 'video',
         artist: localStorage.getItem('uid'),
-        genre: '5d72da73f6cf606626b90f57',
+        genre: '5d78068b8fcb199fd5ab9b0a',
       }
     
       handleChange = (event) => {
@@ -32,6 +32,7 @@ class AddWork extends Component {
         const workInfo = this.state;
         axios.post(`${API_URL}/works`, workInfo, { withCredentials: true })
           .then(res => {
+            console.log(res)
             this.setState({...this.initialState})
             this.props.getUser()
           })
