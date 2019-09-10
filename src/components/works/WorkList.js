@@ -58,7 +58,7 @@ class WorkList extends Component {
   render() {
     if(this.props.works){
       const revWorks = this.props.works.reverse()
-      const worksToList = revWorks.map((work) => <Work key={work._id} work={work} />)
+      const worksToList = revWorks.map((work) => <Work key={work._id} work={work} getUser={this.props.getUser}/>)
 
       return(
         <div className="row">
