@@ -8,13 +8,19 @@ import { API_URL } from '../constants.js';
 class ProfileContainer extends Component {
     state = {
         user: {},
+        profileUser: ''
     }
 
     componentDidMount() {
-        const userId = localStorage.getItem('uid');
+        let userId = '';
+        if(this.props.match.params.pid){
+            userId=this.props.match.params.pid
+        } else {
+            userId = localStorage.getItem('uid')
+        }
         axios.get(`${API_URL}/users/${userId}`, { withCredentials: true})
             .then(res => { 
-                this.setState({ user: res.data.data })
+                this.setState({ user: res.data.data, profileUser: userId})
             })
             .catch(error => console.log(error))
     };
@@ -42,7 +48,7 @@ class ProfileContainer extends Component {
         <>
             <ProfileHeader user={this.state.user}/>
             {/* <EventList user={this.state.user}/> */}
-            <WorkList works={this.state.user.works} getUser={this.getUser} deletThis={this.deletThis}/>
+            <WorkList isProfile='true' works={this.state.user.works} getUser={this.getUser} deletThis={this.deletThis}/>
         </>
         )
     };

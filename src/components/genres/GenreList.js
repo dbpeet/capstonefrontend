@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GenreSummary from './GenreSummary';
 //import '../Cities/css/cities.css';
 
@@ -9,7 +9,7 @@ const GenreList = ( props ) => {
   return(
     <div className="row">
               <div className="container">
-              <h3>Genres</h3>
+              <h2>Genres</h2>
                 { props.genres.length && genreList }
               </div>
     </div>
