@@ -1,26 +1,12 @@
 import React from 'react';
-//import '../Cities/css/cities.css';
-// oldprops= {city:{name, img_url}}
-const ProfileHeader = (props) => {
-   
-   //let url = `/cities/${name}`
-  return (
-    <>
-        ProfileHeader BOOP
-      {/* <div className="container">
-        <div className="row city-container">
-            <div className="col-md-4">
-               <img src={img_url} alt="City-View" className="img-thumbnail city-image" />
-            </div>
+import '../../app.css'
 
-            
-            <div className="col-md-8">
-                <a href={url}><h3 className="city-name">{name}</h3></a>
-          </div>
-              
-          </div>
-      </div> */}
-    </>
+const ProfileHeader = (props) => {
+  return (
+    <div clasName='profile-header' >
+      <img src={props.user.img_link}/>
+      <h3>{props.user.username}</h3>
+    </div>
   );
 };
 export default ProfileHeader;
