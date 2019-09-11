@@ -1,0 +1,19 @@
+img {
+    height: 10vh;
+    width: 10 vw;
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+div.artist {
+    background: lightblue;
+    padding: 15px;
+    margin-bottom: 5px;
+}

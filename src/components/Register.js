@@ -6,7 +6,6 @@ class Register extends Component {
   state = {
     username: '',
     email: '',
-    home_city: '',
     password: '',
     password2: '',
     errors: null,
@@ -51,10 +50,6 @@ class Register extends Component {
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input type="email" id="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-control form-control-lg" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="homeCity">Current City</label>
-              <input type="homeCity" id="homeCity" name="homeCity" value={this.state.homeCity} onChange={this.handleChange} className="form-control form-control-lg" />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>

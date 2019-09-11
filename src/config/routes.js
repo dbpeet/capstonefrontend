@@ -5,12 +5,14 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 // import Profile from '../components/Profile/Profile';
 import ProfileContainer from '../containers/ProfileContainer'
+import HomeContainer from '../containers/HomeContainer'
+
 //import Home from '../pages/Home/Home';
 
 const Path = ({ setCurrentUser, currentUser, history }) => {
   return(
     <Switch>
-      {/* <Route exact path='/' component={Home} /> */}
+      <Route exact path='/' component={HomeContainer} />
       <Route path='/login' render={() => <Login history={history} setCurrentUser={setCurrentUser} />} />
       <Route path='/register' component={Register} />
       <Route path='/profile' component={ProfileContainer} />
