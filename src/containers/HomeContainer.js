@@ -24,11 +24,11 @@ class HomeContainer extends Component {
     render() {
         return (
 
-        <>
-            <ArtistList artists={this.state.artists}/>
-            <GenreList genres={this.state.genres}/>
-            <WorkList works={this.state.works}/>
-        </>
+        <section className='homeContainer'>
+            <ArtistList style={'grid-column: 1;'} artists={this.state.artists}/>
+            <GenreList style={'grid-column: 2;'} genres={this.state.genres}/>
+            <WorkList isProfile='false' style={"grid-column: 3;"} works={this.state.works}/>
+        </section>
         )
     };
 };

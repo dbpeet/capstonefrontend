@@ -10,11 +10,12 @@ ul {
     margin: 5px 0;
 }
 
-li {
+a.nav-link {
     display: inline;
     color: whitesmoke;
     margin: 5px 0;
     padding: 5px 0;
+    display: inline;
 }
 
 a {
@@ -29,4 +30,19 @@ nav.navbar {
 div.profile-header {
     background: rgb(250, 104, 255);
     color: rgb(135, 255, 44);
+}
+
+li.nav-item, li.nav-link {
+    display: inline;
+    padding-left: 10px;
+}
+
+h1.logo {
+    display: inline;
+    margin: 0 10px;
+}
+
+section.homeContainer{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
 }

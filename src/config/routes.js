@@ -15,7 +15,8 @@ const Path = ({ setCurrentUser, currentUser, history }) => {
       <Route exact path='/' component={HomeContainer} />
       <Route path='/login' render={() => <Login history={history} setCurrentUser={setCurrentUser} />} />
       <Route path='/register' component={Register} />
-      <Route path='/profile' component={ProfileContainer} />
+      <Route exact path='/profile' component={ProfileContainer} />
+      <Route path='/profile/:pid' component={ProfileContainer}/>
     </Switch>
   )
 }
