@@ -19,7 +19,7 @@ const Work = ( props ) => {
 
     const otherWork = (
         <div className='work'>
-            <iframe width="560" height="315" src={`https://www.youtube.com/embed/${props.work.video_id}`} frameBorder="0" title={props.work._id} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            <iframe width="504" height="285" src={`https://www.youtube.com/embed/${props.work.video_id}`} frameBorder="0" title={props.work._id} allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             <h3>{props.work.title}</h3>
             <h3>{props.work.artist.username}</h3>
             <p>{props.work.description}</p>
