@@ -1,8 +1,11 @@
 * {
     text-decoration: none;
     font-family: sans-serif;
+    box-sizing: border-box;
 }
-
+body{
+    padding: 30px;
+}
 ul {
     list-style: none;
     display: inline;
@@ -45,4 +48,5 @@ h1.logo {
 section.homeContainer{
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
 }
